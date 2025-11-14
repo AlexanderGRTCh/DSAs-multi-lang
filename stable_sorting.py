@@ -1,10 +1,15 @@
 def sort_list(unsorted_list: list[int]) -> list[int]:
-    # Stable buble sort
-    for j in range(len(unsorted_list)): # Loop through entire list 
-        for i in range(len(unsorted_list) -1 -j):
-            # Loop through list-1 -total iterations (to avoid compairing sorted elements)
-            if unsorted_list[i] > unsorted_list[i+1]: # If not sorted, sort elements
-                unsorted_list[i], unsorted_list[i+1] = unsorted_list[i+1], unsorted_list[i]
+    """ Stable buble sort:
+    We will iterate throughout the list using nested loops
+    Outer loop: number of passes throughout the list
+    Inner loop: compair unsorted adjastent elements and swap if needed
+    Inner loop bounds: len(list) - 1 - total_complete_passes
+    as each complete iteration places the largest remaining element at the end"""
+    for i in range(len(unsorted_list)):
+        for j in range(len(unsorted_list) -1 -i):
+            if unsorted_list[j] > unsorted_list[j+1]:
+                unsorted_list[j], unsorted_list[j+1] = (unsorted_list[j+1], unsorted_list[j])
+
     return unsorted_list
 
 if __name__ == "__main__":
