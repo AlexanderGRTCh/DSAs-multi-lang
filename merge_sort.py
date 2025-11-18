@@ -3,6 +3,7 @@ def sort_list(unsorted_list: list[int]) -> list[int]:
     Recursively split list into single-element sublists;
     merge sublists compairing front elements;
     build and return coomplete ascending-order list.
+    Time complexity: O(nlogn)
     """
 
     ln = len(unsorted_list)
@@ -19,10 +20,10 @@ def sort_list(unsorted_list: list[int]) -> list[int]:
 
     # Merge sublists while either sublist has elements
     while left_index < mid_point or right_index < ln - mid_point:
-        if left_index == mid_point: # If left_list is empty (iterated through)
+        if left_index == mid_point: # If left_list exhausted
             sorted_list.append(right_list[right_index]) # Append top element from right list
             right_index += 1 # Increment right pointer
-        elif right_index == ln - mid_point: # If right_list is empty (iterated through)
+        elif right_index == ln - mid_point: # If right_list exhausted
             sorted_list.append(left_list[left_index])
             left_index += 1
         elif left_list[left_index] <= right_list[right_index]: # If top left list <= top right_list (For unstable use < instead)
