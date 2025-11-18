@@ -1,13 +1,15 @@
 def quick_sort_helper(unsorted_list: list[int], start, end) -> None:
     """
-    Quick Sort: Lomuto approach
-    Select bottom of list as pivot.
-    Assign two pointers (Scanner, Boundary) pointing to top of the list.
-    Increment Scanner by one after each step; increment Boundary by one after each swap.
-    Swaps occur when (Scanner value < Pivot), swapping the elements at Scanner and Boundary.
-    Upon completion of the first pass (Scanner has reached pivot-1), swap Pivot with Boundary.
-    Recursively call on left and right sublists (index ranges) excluding the Pivot.
-    Base case: sublist size <= 1.
+    Quick Sort: Lomuto partition (in-place, recursive)
+
+    Select bottom of current partition (index 'end') as pivot.
+    Assign two pointers (Scanner, Boundary) pointing at 'start' (top) of partition.
+    Scanner increments one step each time; Boundary moves only after a swap.
+    When Scanner value < Pivot, swap elements at Scanner and Boundary, then increment Boundary.
+    When Scanner reaches pivot-1, swap Pivot with Boundary (pivot moves to final position).
+    Recursively sort left [start, boundary-1] and right [boundary+1, end] partitions 
+    (excluding pivot that is boundary at this point).
+    Base case: partition size <= 1 (start >= end) -> already sorted.
     """
 
     # Base case If list partition has 1 or less elements
