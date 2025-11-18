@@ -25,14 +25,13 @@ def sort_list(unsorted_list: list[int]) -> list[int]:
         elif right_index == ln - mid_point: # If right_list is empty (iterated through)
             sorted_list.append(left_list[left_index])
             left_index += 1
-        elif left_list[left_index] < right_list[right_index]: # If top left list < top right list
+        elif left_list[left_index] <= right_list[right_index]: # If top left list <= top right_list (For unstable use < instead)
             sorted_list.append(left_list[left_index])
             left_index += 1
         else: # Else top right list >= top left_list
             sorted_list.append(right_list[right_index])
             right_index += 1
     return sorted_list
-
 
 
 if __name__ == "__main__":
