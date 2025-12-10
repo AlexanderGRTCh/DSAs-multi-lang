@@ -5,7 +5,7 @@ def find_boundary(arr: list[bool]) -> int:
     the index of the first true element. If there is no true element, return -1."""
 
     # Implementing binary search
-    left, right = 0, len(list)-1
+    left, right = 0, len(arr)-1
     result = -1
 
     while(left <= right): # While list not exausted
