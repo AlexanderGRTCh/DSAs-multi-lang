@@ -4,21 +4,18 @@ def find_first_occurrence(arr: list[int], target: int) -> int:
     Return -1 if the target is not in the array.
     Most efficient approach: Binary Search O(nlogn) time complexity."""
 
+    if len(arr) <= 0:
+        return -1
     left, right = 0, len(arr)-1 # Initiate pointers at begin/end of array
-    result = -1 
+
     while(left <= right): # While array not exhausted
         mid = (left + right)//2 # Points midle of list rounded down
-        if (target <= arr[mid]): # If target <= current 
-            result = mid
-            right = mid -1 # Move to left
-        else: # Else move to right
-            left = mid + 1
-    # Lambda for final check
-    get_index = lambda: result if result != -1 and arr[result] == target else -1
-
-
-
-    return get_index()
+        
+        if(arr[mid] < target):
+            left = mid + 1 # Move right
+        else: # arr[mid] >= target
+            right = mid - 1 # Move left
+    return left if left < len(arr) and arr[left] == target else -1
 
 if __name__ == "__main__":
     arr = [int(x) for x in input().split()]
